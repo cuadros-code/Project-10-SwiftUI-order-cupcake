@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1BF551DF2D19D2C0000E62D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1BF551DE2D19D2C0000E62D7 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1BEDE14E2D19C8C90079B4D1 /* Project-10-SwiftUI-order-cupcake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-10-SwiftUI-order-cupcake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BF551DE2D19D2C0000E62D7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		1BEDE1452D19C8C90079B4D1 = {
 			isa = PBXGroup;
 			children = (
+				1BF551DE2D19D2C0000E62D7 /* README.md */,
 				1BEDE1502D19C8C90079B4D1 /* Project-10-SwiftUI-order-cupcake */,
 				1BEDE14F2D19C8C90079B4D1 /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF551DF2D19D2C0000E62D7 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
