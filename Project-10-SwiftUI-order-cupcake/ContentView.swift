@@ -30,7 +30,7 @@ struct ContentView: View {
                 Text(item.collectionName)
             }
         }
-        .task {
+        .task(priority: .userInitiated) {
             await loadData()
         }
     }
