@@ -18,12 +18,21 @@ struct Result: Codable {
     var collectionName: String
 }
 
+@Observable
+class User: Codable {
+    enum CodingKeys: String, CodingKey {
+        case _name = "name"
+    }
+    var name = "Taylor"
+}
+
 struct ContentView: View {
     
     @State private var results = [Result]()
     
     var body: some View {
-        ValidateForms()
+        
+        Button("Encode Taylor", action: encodeTaylor)
         
         List(results, id: \.trackId) { item in
             VStack(alignment: .leading) {
@@ -37,6 +46,15 @@ struct ContentView: View {
         .task(priority: .userInitiated) {
             await loadData()
         }
+    }
+    
+    func encodeTaylor() {
+        let data = try! JSONEncoder().encode(User())
+        let str = String(decoding: data, as: UTF8.self)
+        print(str)
+        
+        let newData = try! JSONDecoder().decode(User.self, from: data)
+        print(newData.name)
     }
     
     func loadData() async {

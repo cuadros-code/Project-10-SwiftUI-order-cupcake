@@ -29,5 +29,16 @@ AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { phase in
     }
 }
 .frame(width: 200, height: 200)
+```
 
+---
+## Force Encode properties
+```swift 
+@Observable
+class User: Codable {
+    enum CodingKeys: String, CodingKey {
+        case _name = "name"
+    }
+    var name = "Taylor"
+}
 ```
