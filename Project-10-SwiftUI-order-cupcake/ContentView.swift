@@ -18,21 +18,12 @@ struct Result: Codable {
     var collectionName: String
 }
 
-@Observable
-class User: Codable {
-    enum CodingKeys: String, CodingKey {
-        case _name = "name"
-    }
-    var name = "Taylor"
-}
-
 struct ContentView: View {
     
     @State private var results = [Result]()
     
     var body: some View {
         
-        Button("Encode Taylor", action: encodeTaylor)
         
         List(results, id: \.trackId) { item in
             VStack(alignment: .leading) {
@@ -48,14 +39,7 @@ struct ContentView: View {
         }
     }
     
-    func encodeTaylor() {
-        let data = try! JSONEncoder().encode(User())
-        let str = String(decoding: data, as: UTF8.self)
-        print(str)
-        
-        let newData = try! JSONDecoder().decode(User.self, from: data)
-        print(newData.name)
-    }
+    
     
     func loadData() async {
         guard let url = URL(string: "https://itunes.apple.com/search?term=taylor+swift&entity=song") else {
@@ -81,57 +65,6 @@ struct ContentView: View {
     
 }
 
-struct ValidateForms: View {
-    @State private var username = ""
-    @State private var email = ""
-    
-    var disableForm: Bool {
-        username.count < 5 || email.count < 5
-    }
-    
-    var body: some View {
-        Form {
-            Section {
-                TextField("Username", text: $username)
-                TextField("Email", text: $email)
-            }
-            Section {
-                Button("Create account") {
-                    print("Creating account…")
-                }
-            }
-            .disabled(disableForm)
-//            .disabled(username.isEmpty || email.isEmpty)
-        }
-    }
-}
-
-struct LoadingAsyncImage: View {
-    var body: some View {
-        AsyncImage(url: URL(string: "https://hws.dev/img/logo.png"), scale: 3)
-        
-        AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { image in
-            image
-                .resizable()
-                .scaledToFit()
-        } placeholder: {
-            Text("Loading...")
-        }
-        
-        AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-                    .scaledToFit()
-            } else if phase.error != nil {
-                Text("There was an error loading the image.")
-            } else {
-                ProgressView()
-            }
-        }
-        .frame(width: 200, height: 200)
-    }
-}
 
 #Preview {
     ContentView()
