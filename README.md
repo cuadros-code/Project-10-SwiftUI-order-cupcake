@@ -3,8 +3,11 @@
 - async / await
 - .task
 - AsyncImage
+- .sensoryFeedback
+- CHHapticEngine
+- import CoreHaptics
 
-- Load Image 
+### Load Image 
 ```swift
 AsyncImage(url: URL(string: "https://hws.dev/img/logo.png"), scale: 3)
 

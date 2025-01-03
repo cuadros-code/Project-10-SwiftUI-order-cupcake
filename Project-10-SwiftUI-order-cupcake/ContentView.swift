@@ -24,19 +24,19 @@ struct ContentView: View {
     
     var body: some View {
         
-        
-        List(results, id: \.trackId) { item in
-            VStack(alignment: .leading) {
-                Text(item.trackName)
-                    .font(.headline)
-                
-                Text(item.collectionName)
-            }
-            
-        }
-        .task(priority: .userInitiated) {
-            await loadData()
-        }
+        HapticEffects()
+//        List(results, id: \.trackId) { item in
+//            VStack(alignment: .leading) {
+//                Text(item.trackName)
+//                    .font(.headline)
+//                
+//                Text(item.collectionName)
+//            }
+//            
+//        }
+//        .task(priority: .userInitiated) {
+//            await loadData()
+//        }
     }
     
     
