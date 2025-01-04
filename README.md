@@ -6,6 +6,7 @@
 - .sensoryFeedback
 - CHHapticEngine
 - import CoreHaptics
+- Task
 
 ### Load Image 
 ```swift
