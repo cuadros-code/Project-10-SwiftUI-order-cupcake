@@ -38,10 +38,48 @@ class Order: Codable {
     var extraFrosting = false
     var addSprinkles = false
     
-    var name = ""
-    var streetAddress = ""
-    var city = ""
-    var zip = ""
+    init(
+        type: Int = 0,
+        quantity: Int = 3,
+        specialRequestEnabled: Bool = false,
+        extraFrosting: Bool = false,
+        addSprinkles: Bool = false,
+        name: String = "",
+        streetAddress: String = "",
+        city: String = "",
+        zip: String = ""
+    ) {
+        self.type = type
+        self.quantity = quantity
+        self.specialRequestEnabled = specialRequestEnabled
+        self.extraFrosting = extraFrosting
+        self.addSprinkles = addSprinkles
+        self.name = UserDefaults.standard.string(forKey: "name") ?? ""
+        self.streetAddress = UserDefaults.standard.string(forKey: "streetAddress") ?? ""
+        self.city = UserDefaults.standard.string(forKey: "city") ?? ""
+        self.zip = UserDefaults.standard.string(forKey: "zip") ?? ""
+    }
+    
+    var name = "" {
+        didSet {
+            UserDefaults.standard.set(name, forKey: "name")
+        }
+    }
+    var streetAddress = "" {
+        didSet {
+            UserDefaults.standard.set(streetAddress, forKey: "streetAddress")
+        }
+    }
+    var city = "" {
+        didSet {
+            UserDefaults.standard.set(city, forKey: "city")
+        }
+    }
+    var zip = "" {
+        didSet {
+            UserDefaults.standard.set(zip, forKey: "zip")
+        }
+    }
     
     var hasValidAddress: Bool {
         if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
