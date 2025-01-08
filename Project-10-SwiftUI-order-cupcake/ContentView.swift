@@ -28,13 +28,11 @@ struct ContentView: View {
                         in: 3...20
                     )
                 }
-                
                 Section {
                     Toggle(
                         "Any special requests?",
                         isOn: $order.specialRequestEnabled.animation()
                     )
-                    
                     if order.specialRequestEnabled {
                         Toggle(
                             "Add extra frosting",

@@ -13,6 +13,9 @@ struct CheckoutView: View {
     @State private var confirmationMessage = ""
     @State private var showConfirmation = false
     
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -48,6 +51,12 @@ struct CheckoutView: View {
         } message: {
             Text(confirmationMessage)
         }
+        
+        .alert("Something went wromg", isPresented: $showErrorAlert) {
+            Button("OK"){}
+        } message: {
+            Text(errorMessage)
+        }
     }
     
     func placeOrder() async {
@@ -63,7 +72,7 @@ struct CheckoutView: View {
         }
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+//        request.httpMethod = "POST"
         
         do {
             let fechtSession = URLSession(configuration: .default)
@@ -79,6 +88,8 @@ struct CheckoutView: View {
             showConfirmation.toggle()
             
         } catch {
+            errorMessage = "Can't place order, please try again"
+            showErrorAlert.toggle()
             print("Checkout failed \(error.localizedDescription)")
         }
             
